@@ -1,0 +1,1 @@
+define(function(require){var frame=require("frame");var o={};o.indexAction=function(){frame.init(3);require("pages/notice").open()};return o});

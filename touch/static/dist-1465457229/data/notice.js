@@ -1,0 +1,1 @@
+define("data/notice",function(){var ajax=require("ajax");var conf=require("conf");var o={};var msglist=[];function sync(){var api="version=4&module=mynotelist";ajax.post(api,{},function(res){msglist=res.Variables.list},true)}o.getlist=function(){if(msglist.length==0){sync()}return msglist};return o});

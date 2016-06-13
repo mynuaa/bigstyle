@@ -1,0 +1,58 @@
+<!--{template common/mwt_header}-->
+<div id="startup">Loading...</div>
+<script>
+  // menu
+  var menulist = [
+      {icon:'icon icon-home',label:lang.home,handler:function(){go("#/")}},
+      {icon:'icon icon-topic',label:lang.forum,handler:function(){go("#/forum")}},
+      {icon:'icon icon-ask',label:lang.post,handler:function(){require("pages/forum/newthread").open('slideTop');}},
+      {icon:'icon icon-comment',label:lang.notice,handler:function(){go("#/message")}},
+      {icon:'icon icon-user',label:lang.uc,handler:function(){go("#/uc")}}
+  ];
+  // url pathlist
+  var pathlist = [ 
+      '/forum','/forum/index',
+      '/message',
+      '/uc'
+  ];
+  // page jump
+  function go(path) {
+      window.location = path;
+  };
+  // require config
+  var baseurl = dz.stylepath+"/touch/static/dist-1465457229/";
+  require.config({
+      baseUrl: baseurl,
+      packages: [
+          {name:'plugin', location:dz.siteurl+'/source/plugin', main:'main'},
+          {name:'frame', location:'frame', main:'main'},
+          {name:'mwt', location:'../libs/mwt/3.1.0', main:'mwt_mobile.min'},
+          {name:'er', location:'../libs/er/3.0.3', main:'main'}
+      ]
+  });
+  define("main",function(require){
+	  return { init:function(){
+          jQuery('#startup').remove();
+          var urlmap = require('core/urlmap');
+          urlmap.start();
+          for (var i=0; i<pathlist.length; ++i) {
+              urlmap.addurl(pathlist[i]);
+          }
+          for (var i=0; i<dz.mobile_plugins.length; ++i) {
+              var p = dz.mobile_plugins[i];
+              if (p!='') urlmap.addurl("/plugin/"+p);
+          }
+      }};
+  });
+  // main
+  jQuery(document).ready(function($) {
+      require(["main","mwt"],function(main){
+		  if (!in_array('mobile',dz.mobile_plugins)) {
+			  jQuery('#startup').html(lang.tip);
+			  return;
+		  }
+          setTimeout(main.init, 100);
+      });
+  });
+</script>
+<!--{template common/mwt_footer}-->

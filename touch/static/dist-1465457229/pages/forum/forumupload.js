@@ -1,0 +1,1 @@
+define(function(require){var frame=require("frame");var ajax=require("ajax");var o={};o.upload=function(file,call){};return o});

@@ -1,0 +1,1 @@
+define(function(require){var log=require("log");var o={};o.start=function(){require("er").start();this.addurl("/");this.addurl("/index");this.addurl("/index/index")};o.addurl=function(path){var item={path:path,type:"core/eraction"};require("er/controller").registerAction(item);log.debug("addurl: "+path)};return o});

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-control" content="{if $_G['setting']['mobile'][mobilecachetime] > 0}{$_G['setting']['mobile'][mobilecachetime]}{else}no-cache{/if}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="keywords" content="{if !empty($metakeywords)}{echo dhtmlspecialchars($metakeywords)}{/if}" />
+  <meta name="description" content="{if !empty($metadescription)}{echo dhtmlspecialchars($metadescription)} {/if},$_G['setting']['bbname']" />
+  <title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> {lang waptitle} - Powered by Discuz!</title>
+  <link rel="stylesheet" href="{$_G['style']['directory']}/touch/static/libs/mwt/3.1.0/mwt_mobile.min.css" type="text/css">
+  <link rel="stylesheet" href="{$_G['style']['directory']}/touch/static/libs/icomoon/icon.css" type="text/css">
+  <link rel="stylesheet" href="{$_G['style']['directory']}/touch/static/css/bigstyle.css" type="text/css">
+  <style>
+    body,td,th,span,b,p,label,div,a,input,button,select,option {font-family: Arial,Tahoma,Verdana,'microsoft yahei';}
+    .headbar {background:darkred;}
+    .headbar td {color:#fff;}
+    .headbar .navtab h1 {font-family:Arial,"microsoft yahei";font-size:18px;letter-spacing:0px;}
+    .footbar .navtab button.active {color:darkred;}
+    .spacebg {background:darkred;color:#fff;}
+  </style>
+  <script src="{$_G['style']['directory']}/touch/static/libs/requirejs/2.1.9/require.js"></script>
+  <script src="{$_G['style']['directory']}/touch/static/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="{$_G['style']['directory']}/touch/static/libs/jquery/1.11.2/ajaxfileupload.js" charset="utf-8"></script>
+  <script src="{$_G['style']['directory']}/touch/static/css/bigstyle.js" charset="utf-8"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var dz = {
+        bodyWidth: document.body.offsetWidth,
+        charset : '{CHARSET}',
+        version : '$_G['setting']['version']',
+        mobileapi : '$_G['siteurl']api/mobile/index.php',
+        postseccheck: '$_G['setting']['seccodedata']['rule']['post']['allow']',
+
+        uid : '$_G[uid]',
+        username : '$_G['username']',
+        avatar : '{avatar($_G['uid'],'',true)}',
+        bbname: '$_G['setting']['bbname']',
+        sitename : '$_G['setting']['sitename']',
+        siteurl : '$_G['siteurl']',
+        scriptfilename: '$_SERVER["SCRIPT_FILENAME"]',
+        pluginpath : './source/plugin',
+        mobile_plugins: [<!--{loop $_G['setting']['hookscriptmobile']['global']['common']['module'] $plugin $im}-->'$plugin', <!--{/loop}-->''],
+        stylepath: '{$_G['style']['directory']}',
+        securl: '$_G['siteurl']misc.php?mod=seccode&mobile=2',
+        loginurl: '$_G['siteurl']member.php?mod=logging&action=login&mobile=2',
+        hash: '<!--{eval echo md5(substr(md5($_G[config][security][authkey]), 8).$_G[uid])}-->'
+    };
+
+    function dz_avatar(uid) {
+        var res = dz.avatar;
+        var i = dz.avatar.indexOf('uid');
+        if (i>0) {
+            var prefix = dz.avatar.substr(0,i);
+            return prefix+'uid='+uid+'&size=middle';
+        }
+        return 'http://mobfile.youzu.com/gips/img?pic=11067252772854077593';
+    }
+  </script>

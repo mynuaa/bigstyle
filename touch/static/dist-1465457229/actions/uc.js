@@ -1,0 +1,1 @@
+define(function(require){var frame=require("frame");var o={};o.indexAction=function(){frame.init(4);require("pages/member/uc").open()};return o});
