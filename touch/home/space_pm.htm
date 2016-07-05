@@ -1,1 +1,9 @@
-<!--{eval dheader('Location:forum.php');exit;}-->
+<!--{template common/mwt_frame}-->
+<script>
+jQuery(document).ready(function($) {
+	require(["jsapp","mwt"],function(jsapp){
+		jsapp.run('home/space_pm');
+	});
+});
+</script>
+<!--{template common/footer}-->

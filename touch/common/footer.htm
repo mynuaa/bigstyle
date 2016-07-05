@@ -1,0 +1,15 @@
+<!--{template common/mwt_style}-->
+<div id="footnavdiv"></div>
+<script src="{$_G['style']['directory']}/touch/static/dist-1467421900/footnav.js" charset="utf-8"></script>
+<!--{if $_G['bigstyle_config']['footnav']}-->
+<script>
+  var navlist= $_G['bigstyle_config']['footnav'];
+  var footnav=new FootNav(navlist);
+  footnav.init();
+</script>
+<!--{else}-->
+<script>
+  var footnav=new FootNav();
+  footnav.init();
+</script>
+<!--{/if}-->

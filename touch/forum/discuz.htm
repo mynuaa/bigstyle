@@ -1,1 +1,14 @@
-<!--{template index}-->
+<!--{if $_GET['forumlist']}-->
+  <!--{template forum/forumlist}-->
+<!--{elseif $_GET['newthread']}-->
+  <!--{template forum/post}-->
+<!--{elseif $_GET['uc']}-->
+  <!--{template home/uc}-->
+<!--{elseif $_GET['setting']}-->
+  <!--{template home/setting}-->
+<!--{elseif $_GET['about']}-->
+  <!--{template home/about}-->
+<!--{else}-->
+  <!--{template index}-->
+<!--{/if}-->
+
