@@ -11,7 +11,7 @@
   <script src="{$_G['style']['directory']}/touch/static/libs/requirejs/2.1.9/require.js"></script>
   <script src="{$_G['style']['directory']}/touch/static/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{$_G['style']['directory']}/touch/static/libs/jquery/1.11.2/ajaxfileupload.js" charset="utf-8"></script>
-  <script src="{$_G['style']['directory']}/touch/static/dist-1467421900/base.js" charset="utf-8"></script>
+  <script src="{$_G['style']['directory']}/touch/static/dist-1471088867/base.js" charset="utf-8"></script>
 </head>
 <body>
 </body>
@@ -21,12 +21,14 @@
     // dz环境参数
     var dz = {
         bodyWidth: document.body.offsetWidth,
+        bodyHeight: window.screen.availHeight,
         charset : '{CHARSET}',
         version : '$_G['setting']['version']',
         mobileapi : '$_G['siteurl']api/mobile/index.php',
         postseccheck: '$_G['setting']['seccodedata']['rule']['post']['allow']',
 
         uid : '$_G[uid]',
+        groupid : '$_G[groupid]',
         username : '$_G['username']',
         avatar : '{avatar($_G['uid'],'',true)}',
         bbname: '$_G['setting']['bbname']',
@@ -54,13 +56,13 @@
             var prefix = dz.avatar.substr(0,i);
             return prefix+'uid='+uid+'&size=middle';
         }
-        return 'http://mobfile.youzu.com/gips/img?pic=11067252772854077593';
+        return "{$_G['style']['directory']}/touch/static/imgs/noavatar.jpg";
     }
 
     require.config({
-        baseUrl: dz.stylepath+"/touch/static/dist-1467421900/",
+        baseUrl: dz.stylepath+"/touch/static/dist-1471088867/",
         packages: [
-            {name:'mwt', location:'../libs/mwt/3.1.0', main:'mwt_mobile.min'}
+            {name:'mwt', location:'../libs/mwt/3.2', main:'mwt_mobile.min'}
         ]
     });
   </script>

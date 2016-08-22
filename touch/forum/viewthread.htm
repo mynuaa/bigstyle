@@ -8,3 +8,8 @@ jQuery(document).ready(function($) {
 	});
 });
 </script>
+
+<!--{loop $postlist $post}-->
+<div id="oripaper" style="display:none;">{$post[message]}</div>
+<!--{eval break;}-->
+<!--{/loop}-->

@@ -1,0 +1,10 @@
+<!--{template common/mwt_frame}-->
+<script>
+jQuery(document).ready(function($) {
+    var catid = '{$_GET[catid]}';
+	require(["jsapp","mwt"],function(jsapp){
+		jsapp.run("portal/index",catid);
+	});
+});
+</script>
+<!--{template common/footer}-->
