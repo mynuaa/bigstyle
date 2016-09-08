@@ -11,7 +11,7 @@
   <script src="{$_G['style']['directory']}/touch/static/libs/requirejs/2.1.9/require.js"></script>
   <script src="{$_G['style']['directory']}/touch/static/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{$_G['style']['directory']}/touch/static/libs/jquery/1.11.2/ajaxfileupload.js" charset="utf-8"></script>
-  <script src="{$_G['style']['directory']}/touch/static/dist-1471088867/base.js" charset="utf-8"></script>
+  <script src="{$_G['style']['directory']}/touch/static/dist-20160902171026/base.js" charset="utf-8"></script>
 </head>
 <body>
 </body>
@@ -20,6 +20,7 @@
 	var pageOpenAnimate="fadeIn";
     // dz环境参数
     var dz = {
+        diylink : false,   //!< 是否启用模板自定义url(原生url无法使用模板时建议启用)
         bodyWidth: document.body.offsetWidth,
         bodyHeight: window.screen.availHeight,
         charset : '{CHARSET}',
@@ -60,7 +61,7 @@
     }
 
     require.config({
-        baseUrl: dz.stylepath+"/touch/static/dist-1471088867/",
+        baseUrl: dz.stylepath+"/touch/static/dist-20160902171026/",
         packages: [
             {name:'mwt', location:'../libs/mwt/3.2', main:'mwt_mobile.min'}
         ]
